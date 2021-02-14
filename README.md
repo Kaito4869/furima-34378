@@ -11,7 +11,7 @@
 | nickname           | string  | null: false                |
 | encrypted_password | string  | null: false                |
 | email              | string  | null: false, unique: :true |
-| birth              | date    | null: false                |
+| birth_date         | date    | null: false                |
 
 ### Association
 
