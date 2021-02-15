@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :purchases
 
-  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }
   validates :family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :nickname, presence: true, length: { maximum: 6 }
