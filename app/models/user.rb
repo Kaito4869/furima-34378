@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
-  has_many :comments
   has_many :purchases
 
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/ }
