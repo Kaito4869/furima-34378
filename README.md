@@ -30,7 +30,7 @@
 | price       | integer    | null: false       |
 | fee_id      | integer    | null: false       |
 | area_id     | integer    | null: false       |
-| date_id     | integer    | null: false       |
+| item_date_id     | integer    | null: false       |
 | user        | references | foreign_key: true |
 
 ### Association
