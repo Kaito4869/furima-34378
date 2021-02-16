@@ -9,13 +9,15 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :item_date
 
-  validates :image, presence: true
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :category_id, presence: true, numericality: { other_than: 1 }
-  validates :state_id, presence: true, numericality: { other_than: 1 }
-  validates :fee_id, presence: true, numericality: { other_than: 1 }
-  validates :area_id, presence: true, numericality: { other_than: 1 }
-  validates :item_date_id, presence: true, numericality: { other_than: 1 }
-  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+  with_options presence: true do
+    validates :image
+    validates :title
+    validates :description
+    validates :category_id, numericality: { other_than: 1 }
+    validates :state_id, numericality: { other_than: 1 }
+    validates :fee_id, numericality: { other_than: 1 }
+    validates :area_id, numericality: { other_than: 1 }
+    validates :item_date_id, numericality: { other_than: 1 }
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+  end
 end

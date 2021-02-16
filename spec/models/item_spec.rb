@@ -80,18 +80,53 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Item date can't be blank")
       end
+      it 'category_idが[1]では登録できない' do
+        @item.category_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category id is invalid")
+      end
+      it 'state_idが[1]では登録できない' do
+        @item.state_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("State id is invalid")
+      end
+      it 'fee_idが[1]では登録できない' do
+        @item.fee_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee id is invalid")
+      end
+      it 'area_idが[1]では登録できない' do
+        @item.area_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Area id is invalid")
+      end
+      it 'item_date_idが[1]では登録できない' do
+        @item.item_date_id = '[1]'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Item date id is invalid")
+      end
       it 'priceが299以下なら登録できない' do
-        @item.price = '200'
+        @item.price = 200
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
       it 'priceが10000000以上なら登録できない' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @irem.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
       it 'priceが半角数字でなければ登録できない' do
         @item.price = '５００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it 'priceが半角英数字混合では登録できない' do
+        @item.price = 'a50'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it 'priceが半角英語だけでは登録できない' do
+        @item.price = 'abc'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
