@@ -10,29 +10,6 @@ RSpec.describe Item, type: :model do
       it 'image,title,desciption,category_id,state_id,price,fee_id,area_id,item_dateが存在すれば登録できる' do
         expect(@item).to be_valid
       end
-      it 'titleが40文字以下であれば登録できる' do
-        @item.title = '鉛筆'
-        expect(@item).to be_valid
-      end
-      it 'descriptionが1000文字以下なら登録できる' do
-        @item.description = '鉛筆です。'
-        expect(@item).to be_valid
-      end
-      it 'priceが300以上なら登録できる' do
-        @item.price = '500'
-        @item.valid?
-        expect(@item).to be_valid
-      end
-      it 'priceが9999999以下なら登録できる' do
-        @item.price = '1000000'
-        @item.valid?
-        expect(@item).to be_valid
-      end
-      it 'priceが半角数字なら登録できる' do
-        @item.price = "500"
-        @item.valid?
-        expect(@item).to be_valid
-      end
     end
     context '商品が保できないとき' do
       it 'imageが空では登録できない' do
