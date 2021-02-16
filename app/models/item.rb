@@ -4,13 +4,9 @@ class Item < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :state
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :fee
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :area
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :item_date
 
   validates :image, presence: true
@@ -21,5 +17,5 @@ class Item < ApplicationRecord
   validates :fee_id, presence: true, numericality: { other_than: 1 }
   validates :area_id, presence: true, numericality: { other_than: 1 }
   validates :item_date_id, presence: true, numericality: { other_than: 1 }
-  validates :price, presence: true
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
 end
