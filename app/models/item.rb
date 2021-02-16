@@ -14,11 +14,12 @@ class Item < ApplicationRecord
     validates :title
     validates :description
     validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
-    with_options numericality: { other_than: 1 }
+    with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :state_id
       validates :fee_id
       validates :area_id
       validates :item_date_id
+    end
   end
 end
