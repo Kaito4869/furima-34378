@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
   describe '商品保存' do
     context '商品が保存できるとき' do
       it 'image,title,desciption,category_id,state_id,price,fee_id,area_id,item_dateが存在すれば登録できる' do
-        @expect(@item).to be_valid
+        expect(@item).to be_valid
       end
       it 'titleが40文字以下であれば登録できる' do
         @item.title = '鉛筆'
@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
     end
     context '商品が保できないとき' do
       it 'imageが空では登録できない' do
-        @item.image = ''
+        @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
@@ -53,12 +53,12 @@ RSpec.describe Item, type: :model do
       it 'category_idが空では登録できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category id can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it 'state_idが空では登録できない' do
         @item.state_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("State id can't be blank")
+        expect(@item.errors.full_messages).to include("State can't be blank")
       end
       it 'priceが空では登録できない' do
         @item.price = ''
@@ -68,42 +68,42 @@ RSpec.describe Item, type: :model do
       it 'fee_idが空では登録できない' do
         @item.fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee id can't be blank")
+        expect(@item.errors.full_messages).to include("Fee can't be blank")
       end
       it 'area_idが空では登録できない' do
         @item.area_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area id can't be blank")
+        expect(@item.errors.full_messages).to include("Area can't be blank")
       end
-      it 'item_dateが空では登録できない' do
-        @item.item_date = ''
+      it 'item_date_idが空では登録できない' do
+        @item.item_date_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Item date can't be blank")
       end
       it 'category_idが[1]では登録できない' do
-        @item.category_id = '[1]'
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category id is invalid")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it 'state_idが[1]では登録できない' do
-        @item.state_id = '[1]'
+        @item.state_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("State id is invalid")
+        expect(@item.errors.full_messages).to include("State must be other than 1")
       end
       it 'fee_idが[1]では登録できない' do
-        @item.fee_id = '[1]'
+        @item.fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee id is invalid")
+        expect(@item.errors.full_messages).to include("Fee must be other than 1")
       end
       it 'area_idが[1]では登録できない' do
-        @item.area_id = '[1]'
+        @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area id is invalid")
+        expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it 'item_date_idが[1]では登録できない' do
-        @item.item_date_id = '[1]'
+        @item.item_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item date id is invalid")
+        expect(@item.errors.full_messages).to include("Item date must be other than 1")
       end
       it 'priceが299以下なら登録できない' do
         @item.price = 200
@@ -112,7 +112,7 @@ RSpec.describe Item, type: :model do
       end
       it 'priceが10000000以上なら登録できない' do
         @item.price = 10000000
-        @irem.valid?
+        @item.valid?
         expect(@item.errors.full_messages).to include("Price is invalid")
       end
       it 'priceが半角数字でなければ登録できない' do
