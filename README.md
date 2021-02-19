@@ -52,7 +52,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## shipping_addresses テーブル
+## addresses テーブル
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | -----------       |
@@ -62,15 +62,13 @@
 | address          | string     | null: false       |
 | building_name    | string     |                   |
 | telephone_number | string     | null: false       |
-| user             | references | null: false       |
-| item             | references | null: false       |
-| purchase         | references | foreign_key: true |
+| order            | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
-## purchases テーブル
+## orders テーブル
 
 | Column      | Type       | Options           |
 | ---------   | ------     | ----------------- |
