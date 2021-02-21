@@ -21,18 +21,18 @@
 
 ## items テーブル
 
-| Column      | Type       | Options           |
-| ---------   | ------     | -----------       |
-| title       | string     | null: false       |
-| description | text       | null: false       |
-| category_id | integer    | null: false       |
-| state_id    | integer    | null: false       |
-| price       | integer    | null: false       |
-| fee_id      | integer    | null: false       |
-| area_id     | integer    | null: false       |
-| item_date_id     | integer    | null: false       |
-| user        | references | foreign_key: true |
-
+| Column       | Type       | Options           |
+| ------------ | ------     | -----------       |
+| title        | string     | null: false       |
+| description  | text       | null: false       |
+| category_id  | integer    | null: false       |
+| state_id     | integer    | null: false       |
+| price        | integer    | null: false       |
+| fee_id       | integer    | null: false       |
+| area_id      | integer    | null: false       |
+| item_date_id | integer    | null: false       |
+| user         | references | foreign_key: true |
+ 
 ### Association
 
 - has_many :comments dependent: :destroy
