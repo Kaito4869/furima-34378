@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def create
     @order_address = OrderAddress.new(order_params)
     if @order_address.save
+      pay_item
       redirect_to root_path
     else
       render action: :index
@@ -22,7 +23,16 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order_address).permit(:zip_code, :area_id, :city, :address, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:order_address).permit(:zip_code, :area_id, :city, :address, :building_name, :telephone_number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+  end
+
+  def pay_item
+    Payjp.api_key = "sk_test_df0de8f65ff857ef1eb69d00"
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
   end
 
   def move_to_index
