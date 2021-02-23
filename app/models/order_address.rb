@@ -9,12 +9,13 @@ class OrderAddress
     validates :address
     validates :telephone_number, format: {with: /\A\d{10}\z|\A\d{11}\z/ , message: "is invalid."}
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
 
     order = Order.create(user_id: user_id, item_id: item_id)
-    # binding.pry
     Address.create(zip_code: zip_code, area_id: area_id, city: city, address: address, building_name: building_name, telephone_number: telephone_number, order_id: order.id)
   end
 
