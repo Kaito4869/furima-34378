@@ -21,18 +21,18 @@
 
 ## items テーブル
 
-| Column      | Type       | Options           |
-| ---------   | ------     | -----------       |
-| title       | string     | null: false       |
-| description | text       | null: false       |
-| category_id | integer    | null: false       |
-| state_id    | integer    | null: false       |
-| price       | integer    | null: false       |
-| fee_id      | integer    | null: false       |
-| area_id     | integer    | null: false       |
-| item_date_id     | integer    | null: false       |
-| user        | references | foreign_key: true |
-
+| Column       | Type       | Options           |
+| ------------ | ------     | -----------       |
+| title        | string     | null: false       |
+| description  | text       | null: false       |
+| category_id  | integer    | null: false       |
+| state_id     | integer    | null: false       |
+| price        | integer    | null: false       |
+| fee_id       | integer    | null: false       |
+| area_id      | integer    | null: false       |
+| item_date_id | integer    | null: false       |
+| user         | references | foreign_key: true |
+ 
 ### Association
 
 - has_many :comments dependent: :destroy
@@ -52,7 +52,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## shipping_addresses テーブル
+## addresses テーブル
 
 | Column           | Type       | Options           |
 | ---------------- | ---------- | -----------       |
@@ -62,13 +62,13 @@
 | address          | string     | null: false       |
 | building_name    | string     |                   |
 | telephone_number | string     | null: false       |
-| purchase         | references | foreign_key: true |
+| order            | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
 
-## purchases テーブル
+## orders テーブル
 
 | Column      | Type       | Options           |
 | ---------   | ------     | ----------------- |
